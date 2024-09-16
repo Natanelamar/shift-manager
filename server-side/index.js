@@ -1,16 +1,14 @@
 const express = require("express");
-const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 const userRoute = require("./routers/userRoute");
 dotenv.config({ path: "./config.env" });
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
 
 const app = express();
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 // connect to DB.
 const dbURI = process.env.STR_CONNECT;
 

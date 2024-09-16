@@ -1,4 +1,8 @@
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
+
+// Load environment variables from config.env file
+dotenv.config({ path: "./config.env" });
 
 // Configure Nodemailer with Mailtrap SMTP settings
 const transporter = nodemailer.createTransport({
