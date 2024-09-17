@@ -1,13 +1,120 @@
-body {
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  background-color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#title{
+  height: 100px;
+  margin: 10px 20px;
+  font-size: 15px;
+}
+
+#profile{
+  width: 200px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#img-pro{
+  margin-bottom: 10px;
+}
+
+#img-pro > h2{
+  text-align: center;
+}
+
+#profile-img{
+  height: 200px;
+  border-radius: 50%;
+}
+
+/* Main container styling */
+.main-div {
+  display: grid; /* Use flexbox to place children side by side */
+  height: 100vh; /* Make the main-div fill the full height of the viewport */
+  grid-template-columns:repeat(2, 1fr);
+}
+
+
+.main-component{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center; 
+}
+
+.main-component > p{
+  margin-top: 50px;
+  line-height: 1.5;
+}
+.main-component > h2{
+  margin-top: 20px;
+  font-size: 40px;
+}
+#img-main{
+  width: 500px;
+  height: 400px;
+margin: auto;
+}
+
+/* Form card styling */
+#form-card {
+  width: 60%; /* Make it responsive to fit the 50% width of the flex container */
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  border: 1px solid gainsboro;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: inset;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the top of the card */
+  padding: 20px; /* Add padding to give some space from the top */
+}
+
+/* Form element styling */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%; /* Reduce the width to add space on the sides */
+  margin-top: 40px; 
+}
+
+form > input{
+  width: 80%;
+  height: 50px;
+  margin: 10px 10px;
+  border: none;
+  border-bottom: 1.5px solid gainsboro;
+  border-radius: 0 0 10px 0;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: none; /* Remove the default outline */ /* Remove the border if needed */
+}
+
+#form-card > h3{
+ margin-top: 20px;
+ font-size: 30px;
+}
+
+.btn-primary{
+  background-color: #047aed;
+  color: #fff;
+  margin-top: 20px;
+  width: 200px;
+  height: 40px;
+  font-size: 15px;
+  border-radius: 25px;
+  transition: transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(0.97); /* Slightly scale down the button */
 }
