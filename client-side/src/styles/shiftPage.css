@@ -1,0 +1,18 @@
+.shifts-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .shifts-page h2 {
+    margin-bottom: 20px;
+  }
+  
+  .shifts-page ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .shifts-page li {
+    margin-bottom: 10px;
+  }
+  
