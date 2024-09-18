@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const User = require("../models/usersModel"); // Your User model
 const transporter = require("../config/mailerConfig");
+const jwt = require('jsonwebtoken');
 
 let verificationCodes = {};
 
@@ -65,5 +66,38 @@ exports.verifyCode = async (req, res) => {
     }
   } else {
     return res.status(400).json({ error: "Invalid verification code" });
+  }
+};
+exports.login = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // שלב 1: חיפוש המשתמש במסד הנתונים
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(400).json({ error: "User not registered" });
+    }
+
+    // שלב 2: השוואת הסיסמה המוצפנת עם הסיסמה שנשלחה
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: "Invalid password" });
+    }
+
+    // שלב 3: יצירת טוקן JWT עם מזהה המשתמש
+    const token = jwt.sign(
+      { userId: user._id, username: user.username }, // המידע שיכנס לטוקן
+      process.env.JWT_SECRET, // הסוד ששומר על האבטחה (מאוכסן ב-`config.env`)
+      { expiresIn: "1h" } // הגבלת זמן לטוקן (במקרה הזה שעה)
+    );
+
+    // שלב 4: החזרת הטוקן כתגובה
+    return res.status(200).json({
+      message: "Login successful",
+      token: token, // הטוקן שנשלח ללקוח
+    });
+  } catch (error) {
+    console.error("Error during login:", error);
+    return res.status(500).json({ error: "Internal server error" });
   }
 };
