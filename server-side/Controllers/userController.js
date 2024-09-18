@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const User = require("../models/usersModel"); // Your User model
 const transporter = require("../config/mailerConfig");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 let verificationCodes = {};
 
@@ -65,7 +65,7 @@ exports.verifyCode = async (req, res) => {
       return res.status(500).json({ error: "Internal server error" });
     }
   } else {
-    return res.status(400).json({ error: "Invalid verification code" });
+    return res.status(400).json({ error: "dfgdsfgdfgdfsgdsgdsfgdfsg123123" });
   }
 };
 exports.login = async (req, res) => {
